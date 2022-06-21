@@ -2,26 +2,45 @@ const title =
 `===========================
 現在持っているタスクの一覧
 ===========================`;
-const taskAction = ['机を片付ける', '牛乳を買う', '散歩する'];
-const taskGenre = ['掃除', '買い物', '運動'];
 
-function newTask(addAction, addGenre) {
-  taskAction.push(addAction);
-  taskGenre.push(addGenre);
+const cleaning = {
+  action:'机を片付ける',
+  genre:'掃除'
+};
 
+const shopping = {
+  action:'牛乳を買う',
+  genre:'買い物'
+};
+
+const motion = {
+  action:'散歩する',
+  genre:'運動'
+};
+
+const taskList = [cleaning, shopping, motion];
+
+const displayTaskList = () => {
   console.log(title);
-  for (let i = 0; i < taskAction.length; i++) {
-  console.log(`${i}：[内容]${taskAction[i]}、[ジャンル]${taskGenre[i]}`);
-  }
+  taskList.forEach((value, index) => {
+    console.log(`${index}：[内容]${taskList[index].action}、[ジャンル]${taskList[index].genre}`);
+  });
 }
 
-console.log(title);
-for (let i = 0; i < taskAction.length; i++) {
-  console.log(`${i}：[内容]${taskAction[i]}、[ジャンル]${taskGenre[i]}`);
+function task(action, genre) {
+  this.action = action;
+  this.genre = genre;
 }
 
-const inputTaskAction = 'タスクを入力して下さい';
-const inputTaskGenre = 'ジャンルを入力して下さい';
+const addTask = (addAction, addGenre) => {
+  const newTask = new task(addAction, addGenre);
+  taskList.push(newTask);
+}
 
-const inputTask = new newTask(inputTaskAction, inputTaskGenre);
-
+displayTaskList();
+const inputAction = prompt('タスクを入力して下さい');
+const inputGenre = prompt('ジャンルを入力して下さい');
+addTask(inputAction, inputGenre);
+displayTaskList();
+alert('新しいタスク追加しました。');
+const nextAction = prompt('「確認、追加、削除、終了」の４つのいずれかを入力してください');
