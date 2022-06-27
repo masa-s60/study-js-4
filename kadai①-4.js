@@ -21,11 +21,11 @@ const tasks = [
 const displayTaskList = () => {
   console.log(title);
   tasks.forEach((task, index) => {
-    console.log(`${index}：[内容]${tasks[index].name}、[ジャンル]${tasks[index].genre}`);
+    console.log(`${index}：[内容]${task.name}、[ジャンル]${task.genre}`);
   });
 }
 
-function CreateTask(name, genre) {
+const CreateTask = (name, genre) => {
   return{
     name,
     genre
